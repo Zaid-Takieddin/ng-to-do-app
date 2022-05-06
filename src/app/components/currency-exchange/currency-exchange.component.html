@@ -1,0 +1,26 @@
+<div class="main">
+  <div>
+    <label for="USD">USD</label>
+    <input
+      [(ngModel)]="USD"
+      type="number"
+      name="USD"
+      id="USD"
+      value="{{ (EUR * 0.92).toFixed(2) }}"
+      placeholder="0.00"
+    />
+    $
+  </div>
+  <div>
+    <label for="EUR">EUR</label>
+    <input
+      [(ngModel)]="EUR"
+      type="number"
+      name="EUR"
+      id="EUR"
+      value="{{ (USD * 1.09).toFixed(2) }}"
+      placeholder="0.00"
+    />
+    &#8364;
+  </div>
+</div>

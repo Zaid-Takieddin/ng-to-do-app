@@ -1,0 +1,19 @@
+<div class="task" [ngStyle]="{ 'background-color': color }">
+  <h3>
+    {{ task.title }}
+    <div class="icons">
+      <fa-icon
+        *ngIf="!task.completed"
+        (click)="onComplete(task)"
+        class="check"
+        [icon]="faCheckCircle"
+      ></fa-icon>
+      <fa-icon
+        (click)="onDelete(task)"
+        class="times"
+        [icon]="faTimesCircle"
+      ></fa-icon>
+    </div>
+  </h3>
+  <p>{{ task.createdAt }}</p>
+</div>

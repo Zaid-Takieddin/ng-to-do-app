@@ -1,0 +1,39 @@
+.task {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+fa-icon {
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+p {
+  font-size: small;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.check {
+  color: green;
+}
+
+.times {
+  color: red;
+}
+
+.bGreen {
+  background-color: green;
+}

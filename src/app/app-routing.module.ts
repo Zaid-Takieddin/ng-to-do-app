@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChartComponent } from './components/chart/chart.component';
 import { CurrencyExchangeComponent } from './components/currency-exchange/currency-exchange.component';
-import { TaskItemComponent } from './components/task-item/task-item.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 
 const routes: Routes = [

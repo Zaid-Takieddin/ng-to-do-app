@@ -1,0 +1,10 @@
+<app-add-task (onAddTask)="addTask($event)"></app-add-task>
+<div>
+  <app-task-item
+    color="{{ task.completed ? 'lightgreen' : '' }}"
+    (onDeleteTask)="deleteTask(task)"
+    (onCompleteTask)="completeTask(task)"
+    *ngFor="let task of tasks"
+    [task]="task"
+  ></app-task-item>
+</div>

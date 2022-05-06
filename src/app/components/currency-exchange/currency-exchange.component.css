@@ -1,0 +1,16 @@
+.main {
+  height: 200px;
+}
+div {
+  text-align: center;
+  height: 100px;
+}
+label {
+  margin-right: 8px;
+}
+
+input {
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+}
