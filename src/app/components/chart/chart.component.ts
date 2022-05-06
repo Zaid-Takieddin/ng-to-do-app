@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
 import { ChartService } from 'src/app/services/chart.service';
 
 @Component({
@@ -7,67 +8,57 @@ import { ChartService } from 'src/app/services/chart.service';
   styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit {
-  data!: Object;
-  dataSource!: Object;
+  data!: any;
+  dataSource!: any;
+  time!: any;
+  open!: any;
 
   constructor(private chartService: ChartService) {
-    const chartData = [
-      {
-        label: 'Venezuela',
-        value: '290',
-      },
-      {
-        label: 'Saudi',
-        value: '260',
-      },
-      {
-        label: 'Canada',
-        value: '180',
-      },
-      {
-        label: 'Iran',
-        value: '140',
-      },
-      {
-        label: 'Russia',
-        value: '115',
-      },
-      {
-        label: 'UAE',
-        value: '100',
-      },
-      {
-        label: 'US',
-        value: '30',
-      },
-      {
-        label: 'China',
-        value: '30',
-      },
-    ];
-
-    const dataSource = {
-      chart: {
-        caption: 'Countries With Most Oil Reserves [2017-18]',
-
-        subCaption: 'In MMbbl = One Million barrels',
-
-        xAxisName: 'Country',
-
-        yAxisName: 'Reserves (MMbbl)',
-        numberSuffix: 'K',
-        theme: 'fusion',
-      },
-      data: chartData,
-    };
-    this.dataSource = dataSource;
+    Chart.register(...registerables);
   }
 
   ngOnInit(): void {
-    // this.chartService.getData(this);
-    // this.setData(this);
-    this.chartService.getData2().subscribe((res: Object) => (this.data = res));
-    console.log(this.data);
+    this.chartService.getData().subscribe((res: any) => {
+      this.data = res;
+      this.dataSource = this.data['Time Series (5min)'];
+      this.time = Object.keys(this.dataSource);
+      this.open = Object.keys(this.dataSource);
+      console.log(this.dataSource);
+    });
+
+    const myChart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: this.time,
+        datasets: [
+          {
+            label: 'open',
+            data: [12, 136, 3, 5, 2, 3],
+            borderWidth: 2,
+            borderColor: 'crimson',
+          },
+          {
+            label: 'high',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 2,
+            borderColor: 'skyblue',
+          },
+          {
+            label: 'low',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 2,
+            borderColor: 'yellow',
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
   }
 
   public setData(data: any) {

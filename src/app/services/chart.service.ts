@@ -17,13 +17,7 @@ export class ChartService {
     'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&outputsize=compact&apikey=CTJGIS6X3BF51RGG';
   constructor(private httpClient: HttpClient) {}
 
-  getData(obj: ChartComponent) {
-    return this.httpClient
-      .get(this.apiUrl)
-      .subscribe((res: any) => obj.setData(res));
-  }
-
-  getData2() {
+  getData() {
     return this.httpClient.get(this.apiUrl);
   }
 }
