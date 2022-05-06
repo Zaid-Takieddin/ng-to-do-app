@@ -29,7 +29,7 @@ export class ChartComponent implements OnInit {
         this.high.push(Object.values(this.dataSource[this.time[i]])[1]);
         this.low.push(Object.values(this.dataSource[this.time[i]])[2]);
       }
-      console.log(this.low);
+      console.log(this.low, this.high, this.open);
     });
 
     const myChart = new Chart('canvas', {
@@ -42,25 +42,45 @@ export class ChartComponent implements OnInit {
             data: this.open,
             borderWidth: 2,
             borderColor: 'crimson',
+            yAxisID: 'y',
           },
           {
             label: 'high',
             data: this.high,
             borderWidth: 2,
             borderColor: 'skyblue',
+            yAxisID: 'y1',
           },
           {
             label: 'low',
             data: this.low,
             borderWidth: 2,
             borderColor: 'yellow',
+            yAxisID: 'y2',
           },
         ],
       },
       options: {
+        responsive: true,
+        interaction: {
+          mode: 'index',
+          intersect: false,
+        },
         scales: {
           y: {
-            beginAtZero: true,
+            type: 'linear',
+            display: true,
+            position: 'left',
+          },
+          y1: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+          },
+          y2: {
+            type: 'linear',
+            display: true,
+            position: 'right',
           },
         },
       },
