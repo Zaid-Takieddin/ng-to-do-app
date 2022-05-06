@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartComponent } from './components/chart/chart.component';
+import { CurrencyExchangeComponent } from './components/currency-exchange/currency-exchange.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: TasksComponent },
+  { path: 'currencyExchange', component: CurrencyExchangeComponent },
+  { path: 'chart', component: ChartComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
